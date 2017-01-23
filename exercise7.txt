@@ -1,0 +1,3 @@
+USE decodemtl_addressbook;
+
+SHOW TABLES;
