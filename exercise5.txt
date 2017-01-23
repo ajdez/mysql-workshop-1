@@ -1,0 +1,15 @@
+CREATE TABLE ACCOUNT (
+Account_ID          INT         AUTO_INCREMENT      PRIMARY KEY
+);
+
+CREATE TABLE ADDRESS_BOOK(
+Address_Book_ID         INT         AUTO_INCREMENT      PRIMARY KEY
+);
+
+CREATE TABLE ENTRY (
+Entry_ID        INT             AUTO_INCREMENT          PRIMARY KEY
+);
+
+CREATE TABLE TEST(
+Test_ID         INT             AUTO_INCREMENT          PRIMARY KEY
+);
