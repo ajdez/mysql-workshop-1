@@ -1,0 +1,5 @@
+USE decodemtl_addressbook;
+
+ALTER TABLE ENTRY ADD COLUMN Type ENUM("home", "work", "other");
+
+ALTER TABLE ENTRY ADD COLUMN Subtype ENUM ("phone", "addess", "email");
