@@ -1,0 +1,62 @@
+CREATE DATABASE hotel;
+
+USE hotel;
+
+CREATE TABLE ROOM(
+    Room_Number             INT     PRIMARY KEY,
+    Room_Capacity           INT,
+    Room_Type               BOOLEAN,
+    Kitchen                 BOOLEAN,
+    Windows_In_Room         INT,
+    Carpet                  BOOLEAN
+);
+
+CREATE TABLE RESERVATION (
+    Reservation_ID          INT         AUTO_INCREMENT      PRIMARY KEY,
+    Reservation_Date        DATE,
+    Room_Number             INT         REFERENCES ROOM(Room_Number)
+);
+
+
+
+
+INSERT INTO ROOM VALUES (101, 4, true, true, 4, true);
+INSERT INTO ROOM VALUES (102, 4, true, true, 4, true);
+INSERT INTO ROOM VALUES (103, 4, true, true, 4, true);
+INSERT INTO ROOM VALUES (104, 4, true, true, 4, true);
+INSERT INTO ROOM VALUES (105, null, false, false, 0, false);
+INSERT INTO ROOM VALUES (201, 2, true, false, 1, false);
+INSERT INTO ROOM VALUES (202, 2, true, false, 1, false);
+INSERT INTO ROOM VALUES (203, 2, true, true, 4, true);
+INSERT INTO ROOM VALUES (204, 2, true, true, 4, true);
+INSERT INTO ROOM VALUES (205, null, false, false, 0, false);
+
+INSERT INTO RESERVATION VALUES (NULL, "2016-05-05", 101);
+INSERT INTO RESERVATION VALUES (NULL, "2016-05-06", 101);
+INSERT INTO RESERVATION VALUES (NULL, "2016-05-07", 101);
+INSERT INTO RESERVATION VALUES (NULL, "2016-05-08", 101);
+INSERT INTO RESERVATION VALUES (NULL, "2016-05-09", 101);
+
+INSERT INTO RESERVATION VALUES (NULL, "2016-05-05", 102);
+INSERT INTO RESERVATION VALUES (NULL, "2016-05-06", 102);
+INSERT INTO RESERVATION VALUES (NULL, "2016-05-07", 102);
+INSERT INTO RESERVATION VALUES (NULL, "2016-05-08", 102);
+INSERT INTO RESERVATION VALUES (NULL, "2016-05-09", 102);
+
+
+
+SELECT ROOM.Room_Number
+    FROM ROOM
+    INNER JOIN RESERVATION
+    ON ROOM.Room_Number = RESERVATION.Room_Number
+    WHERE Reservation_Date = "2016-05-05";
+    
+    
+SELECT ROOM.Room_Number
+    FROM ROOM
+    MINUS
+SELECT DISTINCT ROOM.Room_Number
+    FROM ROOM
+    INNER JOIN RESERVATION
+    ON ROOM.Room_Number = RESERVATION.Room_Number
+    WHERE Reservation_Date = "2016-05-05";
