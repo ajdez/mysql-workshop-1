@@ -48,25 +48,25 @@ INSERT INTO RESERVATION VALUES (NULL, "2016-05-09", 102);
     
     
 SELECT ROOM.Room_Number
-    FROM ROOM
-    MINUS
-SELECT DISTINCT ROOM.Room_Number
-    FROM ROOM
-    INNER JOIN RESERVATION
-    ON ROOM.Room_Number = RESERVATION.Room_Number
-    WHERE Reservation_Date = "2016-05-05";
+    FROM ROOM 
+    WHERE Room_Number
+    NOT IN (
+    SELECT DISTINCT Room_Number
+        FROM RESERVATION
+        WHERE Reservation_Date = "2016-05-05");
     
     
     
 SELECT ROOM.Room_Number
-    FROM ROOM
-    WHERE Room_Capacity > 3
-    MINUS
+    FROM ROOM 
+    WHERE Room_Number 
+    NOT IN (
 SELECT DISTINCT ROOM.Room_Number
     FROM ROOM
-    INNER JOIN RESERVATION
+    JOIN RESERVATION
     ON ROOM.Room_Number = RESERVATION.Room_Number
-    WHERE Reservation_Date = "2016-05-05";
+    WHERE Reservation_Date = "2016-05-05")
+    AND Room_Capacity > 3;
     
     
     
@@ -91,7 +91,7 @@ SELECT SUM(Windows_In_Room)
     WHERE Room_Number > 199
     and Room_Number < 300;
     
-SELECT SUM(Windows_In_Room)
+SELECT AVG(Windows_In_Room)
     FROM ROOM
     WHERE Room_Number > 99
     and Room_Number < 200;
