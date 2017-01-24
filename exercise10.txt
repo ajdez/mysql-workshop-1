@@ -45,11 +45,6 @@ INSERT INTO RESERVATION VALUES (NULL, "2016-05-09", 102);
 
 
 
-SELECT ROOM.Room_Number
-    FROM ROOM
-    INNER JOIN RESERVATION
-    ON ROOM.Room_Number = RESERVATION.Room_Number
-    WHERE Reservation_Date = "2016-05-05";
     
     
 SELECT ROOM.Room_Number
@@ -60,3 +55,50 @@ SELECT DISTINCT ROOM.Room_Number
     INNER JOIN RESERVATION
     ON ROOM.Room_Number = RESERVATION.Room_Number
     WHERE Reservation_Date = "2016-05-05";
+    
+    
+    
+SELECT ROOM.Room_Number
+    FROM ROOM
+    WHERE Room_Capacity > 3
+    MINUS
+SELECT DISTINCT ROOM.Room_Number
+    FROM ROOM
+    INNER JOIN RESERVATION
+    ON ROOM.Room_Number = RESERVATION.Room_Number
+    WHERE Reservation_Date = "2016-05-05";
+    
+    
+    
+    
+SELECT Room_Number
+    FROM ROOM
+    WHERE Room_Type = FALSE;
+    
+
+
+
+SELECT COUNT(Room_Number)
+    FROM ROOM
+    Where Kitchen = TRUE;
+    
+    
+    
+    
+    
+SELECT SUM(Windows_In_Room)
+    FROM ROOM
+    WHERE Room_Number > 199
+    and Room_Number < 300;
+    
+SELECT SUM(Windows_In_Room)
+    FROM ROOM
+    WHERE Room_Number > 99
+    and Room_Number < 200;
+    
+
+
+
+SELECT COUNT(Room_Number)
+    FROM ROOM
+    WHERE Carpet = true;
