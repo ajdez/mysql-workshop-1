@@ -1,0 +1,32 @@
+CREATE DATABASE barn_db;
+
+USE barn_db;
+
+CREATE TABLE CHICKEN_BARN(
+Chicken_ID      INT      AUTO_INCREMENT     PRIMARY KEY,
+Gender          ENUM ("M", "F"),
+DOB             DATE,
+DOD             DATE
+);
+
+INSERT INTO CHICKEN_BARN VALUES(null, "M", "2015-05-05", null), (null, "M", "2015-05-05", null), (null, "F", "2014-02-05", null), (null, "F", "2015-01-02", "2016-05-05");
+
+
+SELECT COUNT(Chicken_ID) 
+    FROM CHICKEN_BARN
+    WHERE DOD is NULL
+    AND
+    DOB > "2015-01-01";
+    
+SELECT COUNT(Chicken_ID)
+    FROM CHICKEN_BARN
+    WHERE DOB 
+    
+    
+SELECT COUNT(Chicken_ID)
+    FROM CHICKEN_BARN
+    WHERE DATE_ADD(DOB, INTERVAL 21 DAY) < "2014-08-08"
+    AND
+    DOD IS NULL;
+
+
